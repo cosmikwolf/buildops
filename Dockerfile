@@ -15,8 +15,9 @@ RUN git config --global user.email "tenkai@zetaohm.com" ; git config --global us
 WORKDIR /tmp
 # Install LLVM-embedded-toolchain-for-Arm
 
-RUN export LLVM_VERSION="LLVM-ET-Arm-19.1.5-Linux-AArch64" ;\
-  export LLVM_URL="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases/download/release-19.1.5/LLVM-ET-Arm-19.1.5-Linux-AArch64.tar.xz -nv" ;\
+ENV LLVM_VERSION="LLVM-ET-Arm-19.1.5-Linux-AArch64"
+
+RUN export LLVM_URL="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases/download/release-19.1.5/LLVM-ET-Arm-19.1.5-Linux-AArch64.tar.xz -nv" ;\
   wget $LLVM_URL ;\
   tar -xf $LLVM_VERSION.tar.xz -C /opt/ ;\
   chmod -R 755 /opt/$LLVM_VERSION/bin
